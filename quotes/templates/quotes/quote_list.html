@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Quotes</title>
+</head>
+<body>
+    <h1>Quotes</h1>
+    {% if user.is_authenticated %}
+        <p><a href="{% url 'add_quote' %}">Add a new quote</a></p>
+    {% endif %}
+    <ul>
+        {% for quote in quotes %}
+            <li>{{ quote.text }} - {{ quote.author }} (added by {{ quote.created_by.username }} on {{ quote.created_at }})</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
